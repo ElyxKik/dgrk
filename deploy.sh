@@ -8,14 +8,10 @@ set -e
 echo "🚀 Déploiement DGRK sur GitHub Pages..."
 echo ""
 
-# Vérifier que le build web existe
-if [ ! -d "mobile/build/web" ]; then
-    echo "❌ Erreur: mobile/build/web n'existe pas"
-    echo "Exécute d'abord: flutter build web --release"
-    exit 1
-fi
-
-echo "✅ Build web trouvé"
+# Reconstruire l'application Flutter Web avec le bon base-href
+echo "🏗️  Reconstruction de l'application Flutter Web..."
+(cd mobile && flutter build web --release --base-href=/dgrk/)
+echo "✅ Build terminé avec succès!"
 echo ""
 
 # Sauvegarder la branche actuelle
